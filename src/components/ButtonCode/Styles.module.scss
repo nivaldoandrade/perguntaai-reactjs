@@ -1,0 +1,30 @@
+.buttonCode {
+	display: flex;
+	align-items: center;
+	height: 40px;
+	border-radius: 8px;
+	border: 1px solid var(--purple);
+	background: transparent;
+
+	p {
+		flex: 1;
+		font-size: 0.87rem;
+		font-weight: 500;
+		color: var(--black);
+		padding: 16px;
+	}
+
+	div {
+		display: flex;
+		align-items: center;
+		padding: 10px;
+		height: 40px;
+		background: var(--purple);
+		border-top-left-radius: 8px;
+		border-bottom-left-radius: 8px;
+
+		svg {
+			color: var(--white-background);
+		}
+	}
+}

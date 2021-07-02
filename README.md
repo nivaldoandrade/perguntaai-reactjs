@@ -1,46 +1,61 @@
-# Getting Started with Create React App
+<h1 align="center">
+	<img src="./src/assets/images/logo.svg" alt="Pergunta aí"/>
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<p align="center">
+	<img src="./assets/capa.png" alt="Capa pergunta aí"/>
+</p>
 
-In the project directory, you can run:
 
-### `yarn start`
+O Pergunta aí é uma aplicação de criação de sala para realização de perguntas em tempo real. Foi utilizado o firebase Authentication(Google) e Realtime Database.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ - **Admin**: Tem as features de marca a pergunta que está sendo respondida, pergunta que já está respondida e exclusão da pergunta.
+ - **Participante**: Tem as features de criação da pergunta, like na pergunta e visualização em tempo real de qual pergunta está sendo respondida no momento e quais já foram respondida.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+ [VÍDEO DE DEMOSTRAÇÃO DO PERGUNTA AÍ.](https://youtu.be/q1X3mOS9g_Q)
 
-### `yarn test`
+## **Configurações Iniciais**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+  # clonar o repositório
+  git clone https://github.com/nivaldoandrade/perguntaai-reactjs
 
-### `yarn build`
+  # Instalar as dependências dentro da pasta clonada
+  yarn
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  # Iniciar a aplicação
+  yarn start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+## **Configurações do Firebase**
+- Criação de um Projeto: [DOCUMENTAÇÃO](https://firebase.google.com/docs/web/setup?authuser=1#create-firebase-project);
+- Authentication: [DOCUMENTAÇÃO](https://firebase.google.com/docs/auth/web/start?authuser=1);
+- REALTIME: [DOCUMENTAÇÃO](https://firebase.google.com/docs/database/web/start?authuser=1);
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Criar o arquivo **env.local**, copiar e modificar de acordo com as ENVS do seu projeto firebase que está no arquivo **env.local.example**.
 
-### `yarn eject`
+## TO DO
+- [] - Modo Dark;
+- [] - Criação da resposta por texto(No momento foi pensando - para responder durante uma live não em texto);
+- [] - Exportação da lista de perguntas;
+- [] - Não mostrar o ID da sala no url, e sim o código da sala;  
+**Irei pensar em mais funções. hehe**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Tecnologias
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- ReactJS;
+- Typescript;
+- Sass;
+- Firebase;
+- Firebase;
+- React Icons;
+- React Modal;
+- React Toastify;
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### **Um pequeno aprendiz nesse grande mundo da programação.** 😃🗺
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<p>
+	<h6>Developed on Next Level Week Together from <a href="https://rocketseat.com.br">RocketSeat</a> by <a href="https://www.linkedin.com/in/diego-schell-fernandes/?originalSubdomain=br">Diego Fernandes.</a></h6>
+</p>

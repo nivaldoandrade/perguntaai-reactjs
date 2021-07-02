@@ -1,0 +1,61 @@
+.adminRooms {
+	width: 100%;
+	margin: 0 auto;
+
+
+	.roomsContent {
+		width: 100%;
+		max-width: 800px;
+		margin: 2.18rem auto;
+
+		.roomsHeader {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1rem;
+			margin-bottom: 1.5rem;
+
+			h1 {
+				font-size: 1.5rem;
+			}
+
+			span {
+				background: var(--purple);
+				padding: 0.5rem 1rem;
+				border-radius: 51px;
+
+				font-size: 0.87rem;
+				font-weight: 500;
+				color: var(--white-background);
+			}
+		}
+
+		.noneQuestion {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 100%;
+			max-width: 284px;
+			margin: 0 auto;
+
+			img {
+				width: 150px;
+				height: 150px;
+				margin-bottom: 1rem;
+			}
+
+			strong {
+				font-size: 1.12rem;
+				font-weight: 600;
+				margin-bottom: 0.5rem;
+			}
+
+			p {
+				font-size: 0.87rem;
+				text-align: center;
+				line-height: 1.31rem;
+			}
+
+		}
+	}
+}

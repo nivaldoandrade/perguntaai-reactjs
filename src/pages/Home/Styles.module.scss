@@ -1,0 +1,142 @@
+.pageAuth {
+	display: flex;
+	align-items: stretch;
+	height: 100vh;
+	
+	@keyframes appaerWithLeft {
+		from {
+			opacity: 0;
+			transform: translateX(-50px);
+		}
+	
+		to {
+			opacity: 1;
+			transform: translateX(0px);
+		}
+	}
+
+
+	aside {
+		animation: appaerWithLeft 1s ease-in-out;
+
+		flex: 6;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+
+		padding: 123px 84px;
+
+		background-color: var(--purple);
+
+		h1 {
+			font-size: 2.25rem;
+			color: var(--white);
+			line-height: 2.62rem;
+			margin-top: 0.5rem;
+			margin-bottom: 1rem;
+		}
+	
+		p {
+			font-size: 1.5rem;
+			color: var(--white-background);
+			line-height: 2rem;
+			opacity: 0.7;
+		}
+	}
+
+	main {
+		flex: 8;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0 32px; 
+	}
+
+	.mainContent {
+		max-width: 320px;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+	
+		> img {
+			align-self: center;
+			margin-bottom: 3.5rem;
+		}
+	
+		.btnGoogle{
+			height: 50px;
+			padding: 0 16px;
+	
+			display: flex;
+			align-items: center;
+			justify-content: center;
+	
+			background-color: transparent;
+			border-radius: 0.5rem;
+			border: 1px solid var(--gray-medium);
+	
+			font-weight: 500;
+			color: var(--black);
+	
+			transition: all 200ms ease-in-out;
+			
+			> img {
+				margin-right: 0.5rem;
+			}
+	
+			&:hover {
+				filter: brightness(0.8);
+			}
+		}
+	
+		.divider {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+	
+			margin: 2rem 0;
+			font-size: 0.87rem;
+			color: var(--gray-medium);
+	
+			&::before {
+				content: '';
+				flex: 1;
+				height: 1px;
+				background-color: var(--gray-medium);
+				margin-right: 1rem;
+			}
+	
+			&::after {
+				content: '';
+				flex: 1;
+				height: 1px;
+				background-color: var(--gray-medium);
+				margin-left: 1rem;
+			}
+		}
+	
+		.enterRoom {
+			input, button {
+				width: 100%;
+			}
+
+			input {
+				height: 50px;
+				padding: 0 16px;
+				margin-bottom: 1rem;
+				background-color: var(--white);
+				border: 1px solid var(--gray-medium);
+				border-radius: 0.5rem;
+				color: var(--black);
+	
+				&:placeholder {
+					color: var(--gray-medium);
+				}
+			}
+		}
+	}
+}
+
+

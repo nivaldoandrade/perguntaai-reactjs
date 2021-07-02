@@ -1,0 +1,52 @@
+.modalContainer {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	right: auto;
+	bottom: auto;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	background-color: var(--white-background);
+	border-radius: 0.5rem;
+}
+	
+
+.modalContent {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 4rem 7rem;
+
+	img {
+		width: 48px;
+		height: 48px;
+	}
+
+	h1 {
+		font-size: 1.5rem;
+		margin: 1.5rem 0 0.75rem;
+	}
+
+	p {
+		color: var(--gray-dark);
+		margin-bottom: 2.5rem;
+		text-align: center;
+	}
+
+	> div {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+}
+
+.modalOverlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(5,2,6, .8);
+}
+
