@@ -14,6 +14,8 @@ O Pergunta aí é uma aplicação de criação de sala para realização de perg
  - **Participante**: Tem as features de criação da pergunta, like na pergunta e visualização em tempo real de qual pergunta está sendo respondida no momento e quais já foram respondida.
 
  [VÍDEO DE DEMOSTRAÇÃO DO PERGUNTA AÍ.](https://youtu.be/q1X3mOS9g_Q)
+ 
+ [ACESSAR DEMOSTRAÇÃO.](https://perguntaai-reactjs.vercel.app/)
 
 ## **Configurações Iniciais**
 
