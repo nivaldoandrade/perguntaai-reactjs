@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { FiCopy, FiCheck } from 'react-icons/fi';
-import { toast } from 'react-toastify';
 
 import styles from './Styles.module.scss';
 
@@ -24,7 +23,6 @@ export function ButtonCode({ roomCode }: ButtonCodeProps) {
 	function handleclippboardRoomCode() {
 		setCopied(true);
 		navigator.clipboard.writeText(String(roomCode));
-		toast.success('Código copiado com sucesso!')
 	}
 
 	return (

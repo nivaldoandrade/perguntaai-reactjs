@@ -13,19 +13,36 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	position: relative;
 
-	img {
+	a > img {
 		width: 100px;
 	}
 
-	> div {
+	.navBar {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: 1rem;
 
-		button {
-			height: 40px;
+		.buttonAvatar {
+			background-color: transparent;
+	
+			img {
+				width: 32px;
+				height: 32px;
+				border-radius: 50%;
+				transition: all ease-in-out;
+	
+				&:hover {
+					filter: brightness(0.9);
+				}
+			}
 		}
+	}
+}
 
+@media(max-width: 426px) {
+	.headerContent {
+		position: initial;
 	}
 }

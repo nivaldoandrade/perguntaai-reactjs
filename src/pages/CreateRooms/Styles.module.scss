@@ -21,7 +21,7 @@
 		flex: 8;
 		display: flex;
 		flex-direction: column;
-		justify-content: flex-end;
+		justify-content: center;
 		align-items: flex-start;
 
 		padding: 123px 84px;
@@ -98,6 +98,14 @@
 				color: var(--pink-dark);
 				margin-left: 0.2rem;
 			}
+		}
+	}
+}
+
+@media(max-width: 1023px) {
+	.pageCreateRoom {
+		aside {
+			display: none;
 		}
 	}
 }

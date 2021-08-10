@@ -74,9 +74,6 @@ export default function Home() {
 
 	return (
 		<div className={styles.pageAuth}>
-			<head>
-				<title>Teste</title>
-			</head>
 			<aside>
 				<img src={IllustrationImg} alt="ilustração" />
 				<h1>Toda pergunta tem uma resposta.</h1>

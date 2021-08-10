@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ButtonCode } from '../ButtonCode';
-import { Button } from '../Button';
 import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
+import { Dropdown } from '../Dropdown';
 import { ModalRoom } from '../Modal/ModalRoom';
+
+import { useAuth } from '../../hooks/useAuth';
 
 import { firebase } from '../../services/firebase';
 
@@ -18,8 +21,29 @@ interface HeaderProps {
 }
 
 export function Header({ roomID, roomCode, isAdminRoom = false }: HeaderProps) {
+	const { user } = useAuth();
+	const isMobile = useMediaQuery({ query: '(max-width: 426px)' });
 
 	const [modalOpen, setModalOpen] = useState(false);
+	const [isShowMenu, setIsShowMenu] = useState(false);
+
+	const divRef = useRef<HTMLDivElement>(null);
+
+	const handleClickOutside = (e: Event) => {
+		if (divRef.current && !divRef.current.contains(e.target as Node)) {
+			setIsShowMenu(false);
+		}
+	};
+
+	useEffect(() => {
+		if (isShowMenu) {
+			document.addEventListener("click", handleClickOutside);
+		}
+
+		return () => {
+			document.removeEventListener("click", handleClickOutside);
+		}
+	}, [isShowMenu])
 
 	async function handleClosedRoom() {
 		if (!roomID && !isAdminRoom) {
@@ -30,7 +54,12 @@ export function Header({ roomID, roomCode, isAdminRoom = false }: HeaderProps) {
 	}
 
 	function toggleModal() {
+		setIsShowMenu(false);
 		setModalOpen(state => !state);
+	}
+
+	function handleShowMenu() {
+		setIsShowMenu(state => !state);
 	}
 
 	return (
@@ -39,14 +68,28 @@ export function Header({ roomID, roomCode, isAdminRoom = false }: HeaderProps) {
 				<Link to="/">
 					<img src={LogoImg} alt="letmeask" />
 				</Link>
-				<div>
-					<ButtonCode roomCode={roomCode} />
-					{isAdminRoom && (
-						<Button isOutline onClick={toggleModal}>
-							Encerrar sala
-						</Button>
-					)}
+				<div className={styles.navBar}>
+					{!isMobile && <ButtonCode roomCode={roomCode} />}
+					{
+						user && (
+							<button
+								className={styles.buttonAvatar}
+								type="button"
+								onClick={handleShowMenu}
+							>
+								<img src={user?.avatar} alt={user?.name} />
+							</button>
+						)
+					}
 				</div>
+				{isShowMenu && (
+					<Dropdown
+						toggleModal={toggleModal}
+						isAdminRoom={isAdminRoom}
+						roomCode={roomCode}
+						ref={divRef}
+					/>
+				)}
 			</div>
 			<ModalRoom
 				isOpen={modalOpen}

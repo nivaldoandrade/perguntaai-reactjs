@@ -40,8 +40,8 @@ export default function AdminRooms() {
 		if (!isLoading && user?.id !== room?.adminRoomID) {
 			history.replace(`/rooms/${id}`)
 		}
-		return () => {
-		}
+		// return () => {
+		// }
 	}, [user?.id, room?.adminRoomID, history, isLoading, id])
 
 

@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext, useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { firebase } from '../services/firebase';
@@ -16,12 +17,15 @@ interface AuthContextProviderProps {
 interface AuthContextTypes {
 	user: User | undefined;
 	signInWithGoogle: () => Promise<void>;
+	signOutWithGoogle: () => void;
 }
 
 export const AuhtContext = createContext({} as AuthContextTypes);
 
 export function AuthContextProvider({ children }: AuthContextProviderProps) {
 	const [user, setUser] = useState<User>();
+
+	const history = useHistory();
 
 	useEffect(() => {
 		const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
@@ -37,6 +41,8 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
 					name: displayName,
 					avatar: photoURL,
 				})
+			} else {
+				setUser(undefined);
 			}
 		})
 
@@ -66,8 +72,16 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
 		}
 	}
 
+	function signOutWithGoogle() {
+		firebase.auth().signOut().then(() => {
+			history.replace('/');
+		}).catch((error) => {
+			throw new Error(`Erro: ${error}, tente novamente`);
+		});
+	}
+
 	return (
-		<AuhtContext.Provider value={{ user, signInWithGoogle }}>
+		<AuhtContext.Provider value={{ user, signInWithGoogle, signOutWithGoogle }}>
 			{children}
 		</AuhtContext.Provider>
 	);

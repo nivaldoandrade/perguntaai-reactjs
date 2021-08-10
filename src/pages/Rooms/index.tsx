@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { firebase } from '../../services/firebase';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { FiThumbsUp } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 
@@ -16,6 +16,7 @@ import NoneQuestionImg from '../../assets/images/noneQuestion.svg';
 import LogoImg from '../../assets/images/logo.svg';
 
 import styles from './Styles.module.scss';
+import { useCallback } from 'react';
 
 interface ParamsRoom {
 	id: string;
@@ -24,6 +25,7 @@ interface ParamsRoom {
 export default function Rooms() {
 	const { user, signInWithGoogle } = useAuth();
 	const { id } = useParams<ParamsRoom>();
+	const history = useHistory()
 	const { isLoading, questions, room } = useRoom(id);
 
 	const [newQuestion, setNewQuestion] = useState('');
@@ -32,7 +34,15 @@ export default function Rooms() {
 		document.title = `Pergunta aí - ${room?.roomCode ?? '...'}`
 	}, [room?.roomCode])
 
-	async function handleCreateQuestion(e: FormEvent) {
+	useEffect(() => {
+		if (!isLoading && user?.id === room?.adminRoomID) {
+			history.replace(`/adminrooms/${id}`)
+		}
+		// return () => {
+		// }
+	}, [user?.id, room?.adminRoomID, history, isLoading, id])
+
+	const handleCreateQuestion = useCallback(async (e: FormEvent) => {
 		e.preventDefault();
 
 		const newQuestionFormatted = newQuestion.trim();
@@ -60,9 +70,9 @@ export default function Rooms() {
 		});
 
 		setNewQuestion('');
-	}
+	}, [id, newQuestion, user])
 
-	async function handleLikeQuestion(questionID: string, likeID: string | undefined) {
+	const handleLikeQuestion = useCallback(async (questionID: string, likeID: string | undefined) => {
 		const roomRef = firebase.database().ref(`/rooms/${id}/questions/${questionID}/likes`);
 
 		if (likeID) {
@@ -70,7 +80,7 @@ export default function Rooms() {
 		} else {
 			await roomRef.push(user?.id);
 		}
-	}
+	}, [id, user?.id]);
 
 	if (isLoading) {
 		return (
